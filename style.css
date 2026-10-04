@@ -768,14 +768,18 @@ body {
 }
 
 /* ========================================================
-   SECTION 2: 3D CAROUSEL GALLERY (.carousel-container)
+   SECTION 2: 流光景深舞台画廊 (.carousel-container)
    ======================================================== */
 .carousel-container {
   width: 100%;
-  height: 380px;
+  height: 420px;
   position: relative;
   user-select: none;
   margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 .carousel {
   width: 100%;
@@ -783,67 +787,78 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  transform-style: preserve-3d;
-  perspective: 1100px;
   position: relative;
 }
 .carousel-item {
   position: absolute;
-  width: 440px;
-  height: 300px;
-  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 540px;
+  height: 350px;
+  max-width: 82vw;
+  max-height: 52vh;
   cursor: pointer;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--card-shadow);
-  border: 1px solid var(--border-light);
+  border: 1.5px solid var(--border-light);
   background: var(--bg-card-solid);
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.5s ease,
+              filter 0.5s ease,
+              box-shadow 0.4s ease,
+              border-color 0.4s ease;
+  will-change: transform, opacity, filter;
 }
 .carousel-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.4s ease;
-}
-.carousel-item:hover img {
-  transform: scale(1.05);
-}
-.carousel_caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 16px 20px;
-  background: linear-gradient(180deg, transparent 0%, rgba(6, 9, 17, 0.95) 100%);
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #ffffff;
-  pointer-events: none;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* 3D Carousel Positioning */
+/* Fluid Carousel States */
 .carousel-item.active {
   z-index: 10;
   transform: translateX(0) scale(1);
   opacity: 1;
+  filter: blur(0px) brightness(1);
   border-color: var(--primary);
-  box-shadow: 0 20px 50px rgba(0, 242, 254, 0.3);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25), 0 0 35px var(--primary-glow);
+  cursor: zoom-in;
 }
+.carousel-item.active:hover img {
+  transform: scale(1.04);
+}
+
 .carousel-item.prev {
   z-index: 5;
-  transform: translateX(-360px) scale(0.85) rotateY(15deg);
-  opacity: 0.7;
+  transform: translateX(-370px) scale(0.85);
+  opacity: 0.6;
+  filter: blur(1.5px) brightness(0.88);
 }
+.carousel-item.prev:hover {
+  opacity: 0.9;
+  filter: blur(0px) brightness(1);
+  transform: translateX(-370px) scale(0.88);
+}
+
 .carousel-item.next {
   z-index: 5;
-  transform: translateX(360px) scale(0.85) rotateY(-15deg);
-  opacity: 0.7;
+  transform: translateX(370px) scale(0.85);
+  opacity: 0.6;
+  filter: blur(1.5px) brightness(0.88);
 }
+.carousel-item.next:hover {
+  opacity: 0.9;
+  filter: blur(0px) brightness(1);
+  transform: translateX(370px) scale(0.88);
+}
+
 .carousel-item.hidden {
   z-index: 1;
-  transform: translateX(0) scale(0.6);
+  transform: translateX(0) scale(0.65);
   opacity: 0;
+  filter: blur(4px);
   pointer-events: none;
 }
 
@@ -1627,15 +1642,18 @@ body {
   .rules-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .carousel-container {
+    height: 350px;
+  }
   .carousel-item {
-    width: 360px;
-    height: 250px;
+    width: 420px;
+    height: 280px;
   }
   .carousel-item.prev {
-    transform: translateX(-240px) scale(0.85);
+    transform: translateX(-260px) scale(0.85);
   }
   .carousel-item.next {
-    transform: translateX(240px) scale(0.85);
+    transform: translateX(260px) scale(0.85);
   }
 }
 
@@ -1677,19 +1695,21 @@ body {
     padding: 60px 18px;
   }
   .carousel-container {
-    height: 300px;
+    height: 290px;
   }
   .carousel-item {
-    width: 280px;
-    height: 200px;
+    width: 310px;
+    height: 210px;
   }
   .carousel-item.prev {
-    transform: translateX(-160px) scale(0.8);
-    opacity: 0.4;
+    transform: translateX(-160px) scale(0.82);
+    opacity: 0.35;
+    filter: blur(2px);
   }
   .carousel-item.next {
-    transform: translateX(160px) scale(0.8);
-    opacity: 0.4;
+    transform: translateX(160px) scale(0.82);
+    opacity: 0.35;
+    filter: blur(2px);
   }
   .carousel-left {
     left: 4px;
@@ -1711,6 +1731,23 @@ body {
 }
 
 @media (max-width: 480px) {
+  .carousel-container {
+    height: 250px;
+  }
+  .carousel-item {
+    width: 270px;
+    height: 180px;
+  }
+  .carousel-item.prev {
+    transform: translateX(-130px) scale(0.8);
+    opacity: 0.25;
+    filter: blur(2px);
+  }
+  .carousel-item.next {
+    transform: translateX(130px) scale(0.8);
+    opacity: 0.25;
+    filter: blur(2px);
+  }
   .detail_item_icon {
     grid-template-columns: 1fr;
   }

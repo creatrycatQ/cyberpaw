@@ -112,6 +112,16 @@ function goToSlide(index) {
   }
 }
 
+function handleCarouselItemClick(index) {
+  if (index === currentSlide) {
+    if (carouselItems[index]) {
+      expandImage(carouselItems[index]);
+    }
+  } else {
+    goToSlide(index);
+  }
+}
+
 function startCarouselAutoPlay() {
   stopCarouselAutoPlay();
   carouselTimer = setInterval(nextSlide, 4500);
