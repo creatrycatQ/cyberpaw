@@ -1,48 +1,17 @@
 /**
- * CYBERPAW 2026 - Official Furry Convention Website Script
- * Layout & interactive mechanics inspired by baishouyuan.cn
- * Includes: 3D Carousel, Lightbox Image Zoom, Schedule Tabs, Live Countdown
+ * 星岚圣域 2026 - 官方网站核心交互脚本
+ * 参考 baishouyuan.cn 沉浸式极简布局动效
+ * 包含：双主题自适应检测与切换、3D 轮播、灯箱全屏预览、日程切换、一键回顶等
  */
-
-// Target Date for Convention Opening (Oct 1, 2026 09:00:00)
-const CON_START_DATE = new Date('2026-10-01T09:00:00').getTime();
 
 document.addEventListener('DOMContentLoaded', () => {
   initThemeMode();
-  initCountdown();
   initTopNavbar();
   initCarousel();
   initScheduleTabs();
   initBackToTop();
   initKeyboardListeners();
 });
-
-/* ========================================================
-   COUNTDOWN TIMER
-   ======================================================== */
-function initCountdown() {
-  const cdText = document.getElementById('hero-cd-text');
-
-  function update() {
-    const now = new Date().getTime();
-    const distance = CON_START_DATE - now;
-
-    if (distance <= 0) {
-      if (cdText) cdText.textContent = '盛会已盛大开幕！';
-      return;
-    }
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-
-    if (cdText) {
-      cdText.textContent = `${days} 天 ${hours} 小时`;
-    }
-  }
-
-  update();
-  setInterval(update, 60000); // Update every minute
-}
 
 /* ========================================================
    TOP NAVBAR SCROLL & MOBILE TOGGLE
