@@ -293,15 +293,7 @@ function initThemeMode() {
    SOCIAL MATRIX & COMMUNITY MODALS
    ======================================================== */
 function openSocialLink(platform) {
-  if (platform === 'bilibili') {
-    window.open('https://space.bilibili.com', '_blank');
-  } else if (platform === 'douyin') {
-    showToast('抖音搜索关注：@星岚圣域极客兽聚 🎬');
-  } else if (platform === 'wikifur') {
-    window.open('https://zh.wikifur.com', '_blank');
-  } else {
-    openContactModal();
-  }
+  showToast('暂无数据');
 }
 
 function openNewsDetail(newsId) {
@@ -332,6 +324,7 @@ function copyText(text) {
   });
 }
 
+let toastTimer = null;
 function showToast(message) {
   const toast = document.getElementById('toast-notify');
   if (!toast) return;
@@ -339,9 +332,13 @@ function showToast(message) {
   toast.textContent = message;
   toast.classList.add('show');
 
-  setTimeout(() => {
+  if (toastTimer) {
+    clearTimeout(toastTimer);
+  }
+
+  toastTimer = setTimeout(() => {
     toast.classList.remove('show');
-  }, 2800);
+  }, 2200);
 }
 
 // Close modal when clicking on backdrop
