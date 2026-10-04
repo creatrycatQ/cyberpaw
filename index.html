@@ -206,48 +206,67 @@
       <div class="carousel-container">
         <div class="carousel" id="carousel">
 
+          <!-- Image 1 -->
           <div class="carousel-item" data-index="0" onclick="handleCarouselItemClick(0)">
             <img src="assets/images/fursuit_highlight.jpg" alt="毛装巡游与全员大合影">
           </div>
 
+          <!-- Image 2 -->
           <div class="carousel-item" data-index="1" onclick="handleCarouselItemClick(1)">
             <img src="assets/images/gallery_stage.jpg" alt="主题舞台秀演与才艺走秀">
           </div>
 
+          <!-- Image 3 -->
           <div class="carousel-item" data-index="2" onclick="handleCarouselItemClick(2)">
             <img src="assets/images/gallery_alley.jpg" alt="同人市集与毛装创作者专区">
           </div>
 
+          <!-- Image 4 -->
           <div class="carousel-item" data-index="3" onclick="handleCarouselItemClick(3)">
             <img src="assets/images/banner.jpg" alt="星岚圣域 官方主题展位海报">
           </div>
 
-          <!-- Carousel Controls (Baishouyuan-style left/right svg arrow buttons) -->
-          <div class="carousel-left" id="carousel-prev" onclick="prevSlide()" aria-label="上一张">
-            <svg viewBox="0 0 1024 1024" width="48" height="48">
-              <path
-                d="M704 908.8 307.2 512 704 115.2c25.6-25.6 25.6-70.4 0-96-25.6-25.6-70.4-25.6-96 0L166.4 460.8C147.2 480 140.8 492.8 140.8 512s6.4 32 19.2 51.2l441.6 441.6c25.6 25.6 70.4 25.6 96 0C729.6 979.2 729.6 934.4 704 908.8z"
-                fill="currentColor"></path>
-            </svg>
+          <!-- Image 5 -->
+          <div class="carousel-item" data-index="4" onclick="handleCarouselItemClick(4)">
+            <img src="assets/images/poster_bottom_1789174651117_axj4nr.jpg" alt="星岚圣域 主题视觉概念海报">
           </div>
 
-          <div class="carousel-right" id="carousel-next" onclick="nextSlide()" aria-label="下一张">
-            <svg viewBox="0 0 1024 1024" width="48" height="48">
-              <path
-                d="M294.4 908.8 684.8 512 294.4 115.2c-25.6-25.6-25.6-70.4 0-96 25.6-25.6 70.4-25.6 96 0L832 460.8c12.8 12.8 19.2 32 19.2 51.2S844.8 544 832 563.2l-441.6 441.6c-25.6 25.6-70.4 25.6-96 0C262.4 979.2 262.4 934.4 294.4 908.8z"
-                fill="currentColor"></path>
-            </svg>
+          <!-- Image 6 -->
+          <div class="carousel-item" data-index="5" onclick="handleCarouselItemClick(5)">
+            <img src="assets/images/gallery_snow.jpg" alt="北国冰城雪景毛毛合影">
+          </div>
+
+          <!-- Image 7 -->
+          <div class="carousel-item" data-index="6" onclick="handleCarouselItemClick(6)">
+            <img src="assets/images/gallery_party.jpg" alt="荧光电音夜场狂欢盛典">
           </div>
 
         </div>
       </div>
 
-      <!-- Dots Indicator -->
-      <div class="carousel-dots" id="carousel-dots">
-        <span class="dot active" onclick="goToSlide(0)"></span>
-        <span class="dot" onclick="goToSlide(1)"></span>
-        <span class="dot" onclick="goToSlide(2)"></span>
-        <span class="dot" onclick="goToSlide(3)"></span>
+      <!-- Carousel Navigation Dock: Separated below image cards to completely avoid collision -->
+      <div class="carousel-controls-bar">
+        <button class="carousel-arrow-btn" id="carousel-prev" onclick="prevSlide()" aria-label="上一张" title="上一张">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+
+        <div class="carousel-dots" id="carousel-dots">
+          <span class="dot active" onclick="goToSlide(0)"></span>
+          <span class="dot" onclick="goToSlide(1)"></span>
+          <span class="dot" onclick="goToSlide(2)"></span>
+          <span class="dot" onclick="goToSlide(3)"></span>
+          <span class="dot" onclick="goToSlide(4)"></span>
+          <span class="dot" onclick="goToSlide(5)"></span>
+          <span class="dot" onclick="goToSlide(6)"></span>
+        </div>
+
+        <button class="carousel-arrow-btn" id="carousel-next" onclick="nextSlide()" aria-label="下一张" title="下一张">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
       </div>
     </section>
 

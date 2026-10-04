@@ -862,60 +862,70 @@ body {
   pointer-events: none;
 }
 
-/* Baishouyuan SVG Left/Right Navigation */
-.carousel-left,
-.carousel-right {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: var(--carousel-arrow-bg);
+/* Gallery Bottom Navigation Dock (Separated below cards to completely eliminate collision) */
+.carousel-controls-bar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 10px auto 0;
+  padding: 8px 18px;
+  background: var(--bg-card);
   border: 1px solid var(--border-light);
-  color: var(--carousel-arrow-color);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all var(--transition-fast);
+}
+.carousel-controls-bar:hover {
+  border-color: var(--border-glow);
+  box-shadow: var(--card-shadow-hover);
+}
+.carousel-arrow-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--badge-bg);
+  border: 1px solid var(--border-light);
+  color: var(--text-main);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 20;
   transition: all var(--transition-fast);
-  backdrop-filter: blur(8px);
-  box-shadow: var(--card-shadow);
+  padding: 0;
+  outline: none;
 }
-.carousel-left {
-  left: 20px;
-}
-.carousel-right {
-  right: 20px;
-}
-.carousel-left:hover,
-.carousel-right:hover {
+.carousel-arrow-btn:hover {
   background: var(--primary);
   color: #ffffff;
   border-color: var(--primary);
-  box-shadow: 0 0 20px var(--primary-glow);
-  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 0 16px var(--primary-glow);
+  transform: scale(1.08);
+}
+.carousel-arrow-btn:active {
+  transform: scale(0.92);
 }
 
 .carousel-dots {
   display: flex;
   align-items: center;
-  gap: 10px;
-  justify-content: center;
+  gap: 8px;
+  padding: 0 4px;
 }
 .carousel-dots .dot {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: var(--radius-pill);
   background: var(--dot-bg);
   cursor: pointer;
   transition: all var(--transition-fast);
 }
 .carousel-dots .dot.active {
-  width: 28px;
+  width: 24px;
   background: var(--primary);
-  box-shadow: 0 0 10px var(--primary);
+  box-shadow: 0 0 10px var(--primary-glow);
 }
 
 /* ========================================================
@@ -1710,12 +1720,6 @@ body {
     transform: translateX(160px) scale(0.82);
     opacity: 0.35;
     filter: blur(2px);
-  }
-  .carousel-left {
-    left: 4px;
-  }
-  .carousel-right {
-    right: 4px;
   }
   .timeline-item {
     grid-template-columns: 1fr;

@@ -67,6 +67,12 @@ function initCarousel() {
     container.addEventListener('mouseenter', stopCarouselAutoPlay);
     container.addEventListener('mouseleave', startCarouselAutoPlay);
   }
+
+  const controlsBar = document.querySelector('.carousel-controls-bar');
+  if (controlsBar) {
+    controlsBar.addEventListener('mouseenter', stopCarouselAutoPlay);
+    controlsBar.addEventListener('mouseleave', startCarouselAutoPlay);
+  }
 }
 
 function updateCarouselClasses() {
