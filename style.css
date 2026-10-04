@@ -4,14 +4,72 @@
    Pure Vanilla CSS for GitHub Pages Hosting
    ======================================================== */
 
-:root {
-  /* Color Tokens */
+/* ========================================================
+   LIGHT THEME (Default - Clean White Aesthetic)
+   ======================================================== */
+:root,
+[data-theme="light"] {
+  /* Surface & Background */
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-card-hover: #ffffff;
+  --bg-card-solid: #ffffff;
+  --card-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+  --card-shadow-hover: 0 14px 34px rgba(15, 23, 42, 0.1);
+
+  /* Primary & Accents */
+  --primary: #0284c7;
+  --primary-glow: rgba(2, 132, 199, 0.28);
+  --secondary: #ea580c;
+  --secondary-glow: rgba(234, 88, 12, 0.25);
+  --accent-purple: #9333ea;
+  --accent-green: #059669;
+
+  /* Typography Colors */
+  --text-main: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --border-light: rgba(15, 23, 42, 0.08);
+  --border-glow: rgba(2, 132, 199, 0.35);
+
+  /* Header & Navigation */
+  --top-bg: rgba(255, 255, 255, 0.88);
+  --top-bg-scrolled: rgba(255, 255, 255, 0.98);
+  --top-shadow: 0 4px 24px rgba(15, 23, 42, 0.08);
+  --menu-hover-bg: rgba(15, 23, 42, 0.05);
+
+  /* Footer */
+  --footer-bg: #f1f5f9;
+  --footer-border: rgba(15, 23, 42, 0.08);
+
+  /* Micro UI Elements */
+  --badge-bg: rgba(15, 23, 42, 0.05);
+  --t-icon-bg: rgba(2, 132, 199, 0.08);
+  --contact-card-bg: #f8fafc;
+  --dot-bg: rgba(15, 23, 42, 0.2);
+  --carousel-arrow-bg: rgba(255, 255, 255, 0.92);
+  --carousel-arrow-color: #0f172a;
+  --glow-opacity: 0.18;
+
+  /* Scrollbar */
+  --scrollbar-track: #f1f5f9;
+  --scrollbar-thumb: #cbd5e1;
+  --scrollbar-thumb-hover: #94a3b8;
+}
+
+/* ========================================================
+   DARK THEME (Night Mode - Deep Cyberpunk Black)
+   ======================================================== */
+[data-theme="dark"] {
+  /* Surface & Background */
   --bg-main: #060911;
   --bg-card: rgba(15, 22, 38, 0.7);
   --bg-card-hover: rgba(22, 33, 58, 0.85);
   --bg-card-solid: #0d1322;
-  
-  /* Primary Glow & Accents */
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --card-shadow-hover: 0 16px 40px rgba(0, 242, 254, 0.12);
+
+  /* Primary & Accents */
   --primary: #00f2fe;
   --primary-glow: rgba(0, 242, 254, 0.4);
   --secondary: #ff7849;
@@ -26,11 +84,38 @@
   --border-light: rgba(255, 255, 255, 0.09);
   --border-glow: rgba(0, 242, 254, 0.3);
 
-  /* Fonts & Transitions */
+  /* Header & Navigation */
+  --top-bg: rgba(6, 9, 17, 0.8);
+  --top-bg-scrolled: rgba(6, 9, 17, 0.95);
+  --top-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  --menu-hover-bg: rgba(255, 255, 255, 0.06);
+
+  /* Footer */
+  --footer-bg: #04070e;
+  --footer-border: rgba(255, 255, 255, 0.08);
+
+  /* Micro UI Elements */
+  --badge-bg: rgba(255, 255, 255, 0.05);
+  --t-icon-bg: rgba(255, 255, 255, 0.06);
+  --contact-card-bg: rgba(255, 255, 255, 0.04);
+  --dot-bg: rgba(255, 255, 255, 0.2);
+  --carousel-arrow-bg: rgba(6, 9, 17, 0.75);
+  --carousel-arrow-color: #cecece;
+  --glow-opacity: 0.4;
+
+  /* Scrollbar */
+  --scrollbar-track: #060911;
+  --scrollbar-thumb: #1e293b;
+  --scrollbar-thumb-hover: #334155;
+}
+
+/* Global Constants */
+:root {
   --font-main: 'Outfit', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
   --container-max: 1200px;
   --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-normal: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-theme: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 20px;
@@ -51,12 +136,16 @@ html {
   color: var(--text-main);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  transition: var(--transition-theme);
 }
 
 body {
   position: relative;
   overflow-x: hidden;
   min-height: 100vh;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  transition: var(--transition-theme);
 }
 
 /* Custom Scrollbar */
@@ -64,14 +153,14 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-main);
+  background: var(--scrollbar-track);
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: var(--scrollbar-thumb);
   border-radius: var(--radius-pill);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: var(--scrollbar-thumb-hover);
 }
 
 /* Ambient Background Lights */
@@ -81,7 +170,8 @@ body {
   filter: blur(140px);
   pointer-events: none;
   z-index: -1;
-  opacity: 0.4;
+  opacity: var(--glow-opacity);
+  transition: opacity 0.5s ease;
 }
 .glow-1 {
   top: 15%;
@@ -248,7 +338,7 @@ body {
 .top {
   width: 100%;
   height: 68px;
-  background-color: rgba(6, 9, 17, 0.8);
+  background-color: var(--top-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-light);
@@ -261,8 +351,8 @@ body {
   transition: all var(--transition-normal);
 }
 .top.scrolled {
-  background-color: rgba(6, 9, 17, 0.95);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  background-color: var(--top-bg-scrolled);
+  box-shadow: var(--top-shadow);
 }
 .top_container {
   max-width: var(--container-max);
@@ -296,8 +386,9 @@ body {
   font-size: 1.15rem;
   font-weight: 900;
   letter-spacing: 0.1em;
-  color: #ffffff;
+  color: var(--text-main);
   line-height: 1.1;
+  transition: color var(--transition-fast);
 }
 .logo_sub {
   font-size: 0.72rem;
@@ -323,8 +414,8 @@ body {
   position: relative;
 }
 .menu_item_a:hover {
-  color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.06);
+  color: var(--text-main);
+  background-color: var(--menu-hover-bg);
 }
 
 .top_actions {
@@ -332,6 +423,54 @@ body {
   align-items: center;
   gap: 14px;
 }
+
+/* Day/Night Theme Mode Toggle Button */
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  color: var(--text-main);
+  cursor: pointer;
+  font-size: 1.15rem;
+  transition: all var(--transition-fast);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  flex-shrink: 0;
+  padding: 0;
+}
+.theme-toggle-btn:hover {
+  transform: scale(1.08);
+  border-color: var(--primary);
+  box-shadow: 0 0 14px var(--primary-glow);
+}
+.theme-toggle-btn:active {
+  transform: scale(0.94);
+}
+.theme-icon {
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  transition: transform 0.3s ease;
+}
+[data-theme="light"] .theme-toggle-btn .sun-icon {
+  display: none;
+}
+[data-theme="light"] .theme-toggle-btn .moon-icon {
+  display: inline-block;
+}
+[data-theme="dark"] .theme-toggle-btn .sun-icon {
+  display: inline-block;
+}
+[data-theme="dark"] .theme-toggle-btn .moon-icon {
+  display: none;
+}
+
 .mobile-toggle {
   display: none;
   background: none;
@@ -521,10 +660,11 @@ body {
   font-size: clamp(2rem, 3.8vw, 2.7rem);
   font-weight: 900;
   letter-spacing: 0.05em;
-  color: #ffffff;
+  color: var(--text-main);
   margin-bottom: 12px;
   position: relative;
   display: inline-block;
+  transition: color var(--transition-fast);
 }
 .detail_item_title::after {
   content: '';
@@ -564,13 +704,14 @@ body {
   align-items: center;
   text-align: center;
   cursor: pointer;
+  box-shadow: var(--card-shadow);
   transition: all var(--transition-normal);
 }
 .detail_item_icon_item:hover {
   transform: translateY(-8px);
   border-color: var(--border-glow);
   background: var(--bg-card-hover);
-  box-shadow: 0 16px 40px rgba(0, 242, 254, 0.12);
+  box-shadow: var(--card-shadow-hover);
 }
 .detail_item_icon_item_img {
   width: 80px;
@@ -616,8 +757,9 @@ body {
 .detail_item_icon_item_content {
   font-size: 1.25rem;
   font-weight: 800;
-  color: #ffffff;
+  color: var(--text-main);
   margin-bottom: 6px;
+  transition: color var(--transition-fast);
 }
 .detail_item_icon_desc {
   font-size: 0.85rem;
@@ -652,7 +794,7 @@ body {
   cursor: pointer;
   border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+  box-shadow: var(--card-shadow);
   border: 1px solid var(--border-light);
   background: var(--bg-card-solid);
 }
@@ -713,9 +855,9 @@ body {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: rgba(6, 9, 17, 0.75);
+  background: var(--carousel-arrow-bg);
   border: 1px solid var(--border-light);
-  color: #cecece;
+  color: var(--carousel-arrow-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -723,6 +865,7 @@ body {
   z-index: 20;
   transition: all var(--transition-fast);
   backdrop-filter: blur(8px);
+  box-shadow: var(--card-shadow);
 }
 .carousel-left {
   left: 20px;
@@ -733,7 +876,7 @@ body {
 .carousel-left:hover,
 .carousel-right:hover {
   background: var(--primary);
-  color: #041226;
+  color: #ffffff;
   border-color: var(--primary);
   box-shadow: 0 0 20px var(--primary-glow);
   transform: translateY(-50%) scale(1.08);
@@ -749,7 +892,7 @@ body {
   width: 10px;
   height: 10px;
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--dot-bg);
   cursor: pointer;
   transition: all var(--transition-fast);
 }
@@ -777,12 +920,13 @@ body {
   cursor: pointer;
   display: flex;
   flex-direction: column;
+  box-shadow: var(--card-shadow);
   transition: all var(--transition-normal);
 }
 .news_item:hover {
   transform: translateY(-8px);
   border-color: var(--border-glow);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+  box-shadow: var(--card-shadow-hover);
 }
 .news_item_image {
   position: relative;
@@ -802,7 +946,7 @@ body {
   position: absolute;
   top: 14px;
   left: 14px;
-  background: rgba(6, 9, 17, 0.85);
+  background: var(--bg-card-solid);
   border: 1px solid var(--border-glow);
   color: var(--primary);
   font-size: 0.75rem;
@@ -820,9 +964,10 @@ body {
 .news_item_title {
   font-size: 1.18rem;
   font-weight: 800;
-  color: #ffffff;
+  color: var(--text-main);
   margin-bottom: 8px;
   line-height: 1.4;
+  transition: color var(--transition-fast);
 }
 .news_item_date {
   font-size: 0.82rem;
@@ -874,18 +1019,23 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 4px;
+  box-shadow: var(--card-shadow);
   transition: all var(--transition-fast);
   font-family: inherit;
 }
 .tab-btn:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--bg-card-hover);
   color: var(--text-main);
 }
 .tab-btn.active {
-  background: linear-gradient(135deg, rgba(0, 242, 254, 0.15) 0%, rgba(2, 132, 199, 0.25) 100%);
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.12) 0%, rgba(2, 132, 199, 0.25) 100%);
   border-color: var(--primary);
-  color: #ffffff;
+  color: var(--text-main);
   box-shadow: 0 4px 20px var(--primary-glow);
+}
+[data-theme="dark"] .tab-btn.active {
+  background: linear-gradient(135deg, rgba(0, 242, 254, 0.15) 0%, rgba(2, 132, 199, 0.25) 100%);
+  color: #ffffff;
 }
 .tab-day {
   font-size: 0.78rem;
@@ -925,6 +1075,7 @@ body {
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
   padding: 22px 26px;
+  box-shadow: var(--card-shadow);
   transition: all var(--transition-fast);
 }
 .timeline-item:hover {
@@ -939,8 +1090,9 @@ body {
 }
 .content-col h4 {
   font-size: 1.15rem;
-  color: #ffffff;
+  color: var(--text-main);
   margin-bottom: 6px;
+  transition: color var(--transition-fast);
 }
 .content-col p {
   font-size: 0.9rem;
@@ -963,7 +1115,7 @@ body {
 .tag-green { background: rgba(16, 185, 129, 0.18); color: var(--accent-green); }
 .tag-purple { background: rgba(168, 85, 247, 0.18); color: var(--accent-purple); }
 .tag-red { background: rgba(239, 68, 68, 0.22); color: #f87171; }
-.tag-gray { background: rgba(255, 255, 255, 0.1); color: var(--text-secondary); }
+.tag-gray { background: var(--badge-bg); color: var(--text-secondary); }
 
 /* ========================================================
    SECTION 5: 会场交通 (Venue & Transport)
@@ -985,14 +1137,16 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow: var(--card-shadow);
 }
 .venue-name-block {
   margin-bottom: 28px;
 }
 .venue-name-block h3 {
   font-size: 1.5rem;
-  color: #ffffff;
+  color: var(--text-main);
   margin-bottom: 8px;
+  transition: color var(--transition-fast);
 }
 .venue-addr {
   font-size: 0.95rem;
@@ -1011,7 +1165,8 @@ body {
 }
 .t-icon {
   font-size: 1.5rem;
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--t-icon-bg);
+  color: var(--primary);
   width: 44px;
   height: 44px;
   display: flex;
@@ -1023,8 +1178,9 @@ body {
 .t-details strong {
   display: block;
   font-size: 0.98rem;
-  color: #ffffff;
+  color: var(--text-main);
   margin-bottom: 2px;
+  transition: color var(--transition-fast);
 }
 .t-details p {
   font-size: 0.88rem;
@@ -1040,6 +1196,7 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  box-shadow: var(--card-shadow);
 }
 .map-mockup {
   position: relative;
@@ -1130,24 +1287,26 @@ body {
   border-radius: var(--radius-md);
   padding: 30px 24px;
   position: relative;
+  box-shadow: var(--card-shadow);
   transition: all var(--transition-normal);
 }
 .rule-card:hover {
   transform: translateY(-5px);
   border-color: var(--secondary);
-  box-shadow: 0 10px 30px rgba(255, 120, 73, 0.08);
+  box-shadow: var(--card-shadow-hover);
 }
 .rule-num {
   font-size: 2.2rem;
   font-weight: 900;
-  color: rgba(255, 120, 73, 0.25);
+  color: rgba(234, 88, 12, 0.35);
   line-height: 1;
   margin-bottom: 14px;
 }
 .rule-card h4 {
   font-size: 1.15rem;
-  color: #ffffff;
+  color: var(--text-main);
   margin-bottom: 10px;
+  transition: color var(--transition-fast);
 }
 .rule-card p {
   font-size: 0.88rem;
@@ -1159,10 +1318,11 @@ body {
    FOOTER (Baishouyuan Style Clean Bottom)
    ======================================================== */
 .footer {
-  background: #04070e;
-  border-top: 1px solid var(--border-light);
+  background: var(--footer-bg);
+  border-top: 1px solid var(--footer-border);
   padding: 70px 24px 30px;
   width: 100%;
+  transition: background-color 0.4s ease, border-color 0.4s ease;
 }
 .footer-container {
   max-width: var(--container-max);
@@ -1190,7 +1350,8 @@ body {
   font-size: 1.15rem;
   font-weight: 900;
   letter-spacing: 0.1em;
-  color: #ffffff;
+  color: var(--text-main);
+  transition: color var(--transition-fast);
 }
 .brand-sub {
   font-size: 0.72rem;
@@ -1206,7 +1367,7 @@ body {
 }
 .github-badge {
   display: inline-block;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--badge-bg);
   border: 1px solid var(--border-light);
   padding: 6px 14px;
   border-radius: var(--radius-pill);
@@ -1220,10 +1381,11 @@ body {
   gap: 32px;
 }
 .link-col h5 {
-  color: #ffffff;
+  color: var(--text-main);
   font-size: 0.95rem;
   margin-bottom: 18px;
   font-weight: 700;
+  transition: color var(--transition-fast);
 }
 .link-col a {
   display: block;
@@ -1238,7 +1400,7 @@ body {
 }
 
 .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid var(--footer-border);
   padding-top: 24px;
   display: flex;
   align-items: center;
@@ -1280,7 +1442,7 @@ body {
   width: 100%;
   padding: 32px;
   position: relative;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
+  box-shadow: var(--card-shadow-hover);
   animation: modalScale 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .modal-close {
@@ -1295,7 +1457,7 @@ body {
   line-height: 1;
 }
 .modal-close:hover {
-  color: #ffffff;
+  color: var(--text-main);
 }
 .modal-header {
   text-align: center;
@@ -1310,8 +1472,9 @@ body {
 }
 .modal-header h3 {
   font-size: 1.35rem;
-  color: #ffffff;
+  color: var(--text-main);
   margin-bottom: 6px;
+  transition: color var(--transition-fast);
 }
 .modal-header p {
   font-size: 0.85rem;
@@ -1327,7 +1490,7 @@ body {
   display: flex;
   align-items: center;
   gap: 14px;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--contact-card-bg);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-sm);
   padding: 14px 18px;
@@ -1342,7 +1505,8 @@ body {
 }
 .contact-info strong {
   font-size: 0.9rem;
-  color: #ffffff;
+  color: var(--text-main);
+  transition: color var(--transition-fast);
 }
 .contact-info span {
   font-size: 0.85rem;
@@ -1396,6 +1560,7 @@ body {
   z-index: 900;
   opacity: 0;
   transform: translateY(20px);
+  box-shadow: var(--card-shadow);
   transition: all var(--transition-normal);
 }
 .back-to-top.visible {
@@ -1404,7 +1569,7 @@ body {
 }
 .back-to-top:hover {
   background: var(--primary);
-  color: #041226;
+  color: #ffffff;
   border-color: var(--primary);
   box-shadow: 0 0 20px var(--primary-glow);
 }
@@ -1479,7 +1644,7 @@ body {
     top: 60px;
     left: 0;
     width: 100%;
-    background: rgba(6, 9, 17, 0.98);
+    background: var(--top-bg-scrolled);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border-light);
     flex-direction: column;

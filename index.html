@@ -1,13 +1,29 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="light">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>星岚圣域 - 2026</title>
-  <meta name="description" content="星岚圣域 2026 极客兽聚官方网站。汇聚毛装巡游、同人市集、舞台盛典与交流派对。寻迹山海边，相约白兽渊风格极简展会官网。">
-  <meta name="keywords" content="兽聚, 极客兽聚, 星岚圣域, 白兽渊, 毛装, Fursuit, 同人展, 兽展官网">
+  <title>星岚圣域 - 2026 第一届哈尔滨小展</title>
+  <meta name="description" content="星岚圣域 2026 第一届哈尔滨小展官方网站。毛装巡游、同人市集、舞台盛典与交流派对。2026.10.1 - 10.3 相约哈尔滨永兴假日酒店，一起欢乐地玩耍！">
+  <meta name="keywords" content="星岚圣域, 兽聚, 哈尔滨兽聚, 极客兽聚, 毛装, Fursuit, 同人展, 永兴假日酒店">
   <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+
+  <!-- Immediate Theme Check: Default White, Night Black, LocalStorage override -->
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem('site_theme');
+        if (saved) {
+          document.documentElement.setAttribute('data-theme', saved);
+        } else {
+          const hour = new Date().getHours();
+          const isNight = hour >= 18 || hour < 6;
+          document.documentElement.setAttribute('data-theme', isNight ? 'dark' : 'light');
+        }
+      } catch (e) { }
+    })();
+  </script>
 
   <!-- Google Fonts: Outfit & Noto Sans SC -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,6 +73,12 @@
       </nav>
 
       <div class="top_actions">
+        <!-- Day/Night Theme Mode Toggle Button -->
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="切换日间/夜间模式" title="切换模式">
+          <span class="theme-icon sun-icon">☀️</span>
+          <span class="theme-icon moon-icon">🌙</span>
+        </button>
+
         <button class="btn btn-primary btn-sm" onclick="openContactModal()">
           <span>加入Q群</span>
         </button>
@@ -82,10 +104,10 @@
         <span>距离开幕仅剩 <strong id="hero-cd-text">-- 天 -- 时</strong></span>
       </div>
 
-      <h1 class="bgvideo1 glowing-text">极 客 兽 聚</h1>
-      <p class="bgvideo2 glowing-text">寻迹科技边 · 相约极客渊</p>
+      <h1 class="bgvideo1 glowing-text">星 岚 圣 域</h1>
+      <p class="bgvideo2 glowing-text">第一届2026哈尔滨小展</p>
 
-      <p class="bgvideo_sub">跨越虚拟与现实的毛毛盛会 · 2026.10.14 - 10.16 · 新纪元未来博览中心</p>
+      <p class="bgvideo_sub">一起欢乐的玩耍 · 2026.10.1 - 10.3 ·永兴假日酒店</p>
 
       <div class="hero_btn_group">
         <a href="#explore" class="btn btn-hero-glow">
@@ -302,15 +324,15 @@
       <!-- Schedule Filter Tabs -->
       <div class="schedule-tabs" id="schedule-tabs">
         <button class="tab-btn active" data-day="day1">
-          <span class="tab-day">DAY 1 (10.14)</span>
+          <span class="tab-day">DAY 1 (10.01)</span>
           <span class="tab-name">启幕 · 入场与前瞻</span>
         </button>
         <button class="tab-btn" data-day="day2">
-          <span class="tab-day">DAY 2 (10.15)</span>
+          <span class="tab-day">DAY 2 (10.02)</span>
           <span class="tab-name">狂欢 · 巡游与夜场</span>
         </button>
         <button class="tab-btn" data-day="day3">
-          <span class="tab-day">DAY 3 (10.16)</span>
+          <span class="tab-day">DAY 3 (10.03)</span>
           <span class="tab-name">盛景 · 市集与合影</span>
         </button>
       </div>
@@ -423,44 +445,44 @@
     <section class="detail_item" id="venue">
       <div class="detail_item_header">
         <div class="detail_item_title">会场交通</div>
-        <p class="detail_item_subtitle">新纪元未来博览中心 · 交通便捷，周边配套完善</p>
+        <p class="detail_item_subtitle">哈尔滨 · 永兴假日酒店 · 交通便捷，周边配套完善</p>
       </div>
 
       <div class="venue-container">
         <div class="venue-grid">
           <div class="venue-info-box">
             <div class="venue-name-block">
-              <h3>新纪元未来博览中心 · 主馆</h3>
-              <p class="venue-addr">📍 创想新城核心区科技大道 88 号（展馆 1 号门入场）</p>
+              <h3>哈尔滨 · 永兴假日酒店</h3>
+              <p class="venue-addr">📍 哈尔滨市 · 永兴假日酒店（展会主会场与专属签到处）</p>
             </div>
 
             <div class="traffic-methods">
               <div class="traffic-item">
                 <div class="t-icon">🚇</div>
                 <div class="t-details">
-                  <strong>轨道交通</strong>
-                  <p>地铁 2 号线 / 11 号线【博览中心站】A 口出站，直行 150 米即达安检入口。</p>
+                  <strong>公共交通</strong>
+                  <p>乘坐地铁或公交直达酒店周边站点，出站步行直达酒店大堂接待处。</p>
                 </div>
               </div>
               <div class="traffic-item">
                 <div class="t-icon">✈️</div>
                 <div class="t-details">
                   <strong>机场直达</strong>
-                  <p>机场乘坐机场快线直达【博览南站】（约 35 分钟），或打车约 25 公里。</p>
+                  <p>哈尔滨太平国际机场乘坐机场大巴或出租/网约车直达酒店（约 40 分钟车程）。</p>
                 </div>
               </div>
               <div class="traffic-item">
                 <div class="t-icon">🚄</div>
                 <div class="t-details">
-                  <strong>高铁站接驳</strong>
-                  <p>高铁中心站乘地铁 2 号线直达，无需换乘；西广场设专员接驳指引。</p>
+                  <strong>高铁/火车站接驳</strong>
+                  <p>哈尔滨站 / 哈尔滨西站乘坐地铁或打车便捷到达，市内交通畅达。</p>
                 </div>
               </div>
               <div class="traffic-item">
                 <div class="t-icon">🏨</div>
                 <div class="t-details">
-                  <strong>特惠合作酒店</strong>
-                  <p>协议星级酒店【凯莱未来酒店】紧邻会场，参会兽友享 7 折连住特惠，带毛装晾干间。</p>
+                  <strong>会场酒店住宿</strong>
+                  <p>参会兽友享专属特惠协议房，出房门直通主会场，含专属毛装通风晾干间。</p>
                 </div>
               </div>
             </div>
@@ -474,11 +496,11 @@
               </div>
               <div class="map-grid-lines"></div>
               <div class="map-info-badge">
-                <span>室内可用总面积 8,000㎡ · 全覆盖中央恒温</span>
+                <span>展厅全覆盖中央恒温 · 专属更衣休息专区</span>
               </div>
             </div>
             <div class="map-card-footer">
-              <span>导航推荐搜索：<strong>“新纪元未来博览中心-A馆”</strong></span>
+              <span>导航推荐搜索：<strong>“哈尔滨永兴假日酒店”</strong></span>
               <a href="https://maps.google.com" target="_blank" rel="noreferrer" class="btn btn-sm btn-ghost">
                 在大地图中打开 ↗
               </a>
@@ -530,11 +552,11 @@
             <img src="assets/images/logo.jpg" alt="星岚圣域 Logo" class="brand-img">
             <div class="brand-text">
               <span class="brand-title">星岚圣域</span>
-              <span class="brand-sub">2026 // 极客兽聚组委会</span>
+              <span class="brand-sub">2026 // 星岚圣域组委会</span>
             </div>
           </div>
           <p class="footer-bio">
-            寻迹科技边，相约极客渊。跨越虚拟与现实的毛茸盛会。
+            星岚圣域 2026 // 第一届哈尔滨小展。寻迹北国冰城，一起欢乐地玩耍！
           </p>
           <div class="github-badge">
             <span>🚀 托管于 GitHub Pages · 纯静态零构建架构</span>
@@ -606,7 +628,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <p class="modal-tip">客服咨询邮箱：contact@星岚圣域.example.com</p>
+        <p class="modal-tip">客服咨询邮箱：contact@creatrycat.cn</p>
       </div>
     </div>
   </div>

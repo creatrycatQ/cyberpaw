@@ -4,10 +4,11 @@
  * Includes: 3D Carousel, Lightbox Image Zoom, Schedule Tabs, Live Countdown
  */
 
-// Target Date for Convention Opening (Oct 14, 2026 09:00:00)
-const CON_START_DATE = new Date('2026-10-14T09:00:00').getTime();
+// Target Date for Convention Opening (Oct 1, 2026 09:00:00)
+const CON_START_DATE = new Date('2026-10-01T09:00:00').getTime();
 
 document.addEventListener('DOMContentLoaded', () => {
+  initThemeMode();
   initCountdown();
   initTopNavbar();
   initCarousel();
@@ -243,13 +244,59 @@ function initBackToTop() {
 }
 
 /* ========================================================
+   DAY/NIGHT THEME SYSTEM (WHITE DEFAULT, NIGHT BLACK)
+   ======================================================== */
+function initThemeMode() {
+  const themeToggle = document.getElementById('theme-toggle');
+
+  function getAutoTheme() {
+    const hour = new Date().getHours();
+    // Night is between 18:00 (6 PM) and 06:00 (6 AM)
+    return (hour >= 18 || hour < 6) ? 'dark' : 'light';
+  }
+
+  function applyTheme(theme, save = false) {
+    document.documentElement.setAttribute('data-theme', theme);
+    if (save) {
+      try {
+        localStorage.setItem('site_theme', theme);
+      } catch (e) { }
+    }
+    if (themeToggle) {
+      const isDark = theme === 'dark';
+      themeToggle.setAttribute('title', isDark ? '当前为夜间深色模式（点击切换白昼模式）' : '当前为白昼浅色模式（点击切换夜间模式）');
+      themeToggle.setAttribute('aria-label', isDark ? '切换至白昼浅色模式' : '切换至夜间深色模式');
+    }
+  }
+
+  // 1. Initial State: Check user override in localStorage, else determine by day/night hour
+  let savedTheme = null;
+  try {
+    savedTheme = localStorage.getItem('site_theme');
+  } catch (e) { }
+
+  const initialTheme = savedTheme || getAutoTheme();
+  applyTheme(initialTheme, false);
+
+  // 2. Manual Toggle Button Event Listener
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') || 'light';
+      const targetTheme = current === 'dark' ? 'light' : 'dark';
+      applyTheme(targetTheme, true);
+      showToast(targetTheme === 'dark' ? '已切换至夜间深色模式 🌙' : '已切换至白昼浅色模式 ☀️');
+    });
+  }
+}
+
+/* ========================================================
    SOCIAL MATRIX & COMMUNITY MODALS
    ======================================================== */
 function openSocialLink(platform) {
   if (platform === 'bilibili') {
     window.open('https://space.bilibili.com', '_blank');
   } else if (platform === 'douyin') {
-    showToast('抖音搜索关注：@CyberPaw极客兽聚 🎬');
+    showToast('抖音搜索关注：@星岚圣域极客兽聚 🎬');
   } else if (platform === 'wikifur') {
     window.open('https://zh.wikifur.com', '_blank');
   } else {
@@ -259,7 +306,7 @@ function openSocialLink(platform) {
 
 function openNewsDetail(newsId) {
   if (newsId === 1) {
-    showToast('📰 CyberPaw 2026 一宣完整动态已同步至官方社群与B站！');
+    showToast('📰 星岚圣域 2026 一宣完整动态已同步至官方社群与B站！');
   } else if (newsId === 2) {
     showToast('🎤 舞台走秀与红毯巡游报名通道可在官方群向管理报名！');
   } else if (newsId === 3) {
