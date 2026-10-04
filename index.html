@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberPaw 2026 // 极客兽聚 · 寻迹科技边，相约极客渊</title>
+  <meta name="description" content="CyberPaw 2026 极客兽聚官方网站。汇聚毛装巡游、同人市集、舞台盛典与交流派对。寻迹山海边，相约白兽渊风格极简展会官网。">
+  <meta name="keywords" content="兽聚, 极客兽聚, CyberPaw, 白兽渊, 毛装, Fursuit, 同人展, 兽展官网">
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+  
+  <!-- Google Fonts: Outfit & Noto Sans SC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Fullscreen Lightbox for Picture Gallery (Baishouyuan-style large_image) -->
+  <div class="large_image" id="large_image" onclick="closeLargeImage()">
+    <div class="large_image_inner">
+      <img src="" id="large_image_img" alt="Enlarged view">
+      <div class="large_image_close">&times;</div>
+    </div>
+  </div>
+
+  <!-- Background Ambient Glows -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <!-- Top Navigation (Baishouyuan-style Floating Navbar) -->
+  <header class="top" id="top-navbar">
+    <div class="top_container">
+      <a href="#hero" class="logo">
+        <img src="assets/images/logo.jpg" alt="CyberPaw Logo">
+        <div class="logo_text">
+          <span class="logo_title">CYBERPAW</span>
+          <span class="logo_sub">极客兽聚 2026</span>
+        </div>
+      </a>
+
+      <nav class="menu" id="menu">
+        <a href="#hero" class="menu_item_a">网站首页</a>
+        <a href="#explore" class="menu_item_a">了解更多</a>
+        <a href="#gallery" class="menu_item_a">图片展示</a>
+        <a href="#news" class="menu_item_a">最新资讯</a>
+        <a href="#schedule" class="menu_item_a">活动日程</a>
+        <a href="#venue" class="menu_item_a">会场交通</a>
+        <a href="#guidelines" class="menu_item_a">参会守则</a>
+      </nav>
+
+      <div class="top_actions">
+        <button class="btn btn-primary btn-sm" onclick="openContactModal()">
+          <span>加入Q群</span>
+        </button>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="切换菜单">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section (Baishouyuan-style Fullscreen Video/KV with Glowing Text) -->
+  <section class="hero-fullscreen" id="hero">
+    <!-- Full-bleed Background Visual -->
+    <div class="bgvideo_wrapper">
+      <img src="assets/images/banner.jpg" alt="Convention Key Visual" class="bgvideo">
+      <div class="bgvideo_overlay"></div>
+    </div>
+
+    <!-- Glowing Center Hero Text (Baishouyuan Glowing Text Signature) -->
+    <div class="bgvideo_text">
+      <div class="hero_countdown_chip">
+        <span class="pulse_dot"></span>
+        <span>距离开幕仅剩 <strong id="hero-cd-text">-- 天 -- 时</strong></span>
+      </div>
+
+      <h1 class="bgvideo1 glowing-text">极 客 兽 聚</h1>
+      <p class="bgvideo2 glowing-text">寻迹科技边 · 相约极客渊</p>
+
+      <p class="bgvideo_sub">跨越虚拟与现实的毛毛盛会 · 2026.10.14 - 10.16 · 新纪元未来博览中心</p>
+
+      <div class="hero_btn_group">
+        <a href="#explore" class="btn btn-hero-glow">
+          <span>探索展会</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+        </a>
+        <button class="btn btn-hero-ghost" onclick="openContactModal()">
+          <span>加入官方社群</span>
+        </button>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <a href="#explore" class="scroll-down-indicator" aria-label="向下滑动">
+        <div class="mouse-icon">
+          <div class="wheel"></div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Main Content Flow (Baishouyuan-style detail items) -->
+  <main class="detail">
+
+    <!-- Section 1: 了解更多 (Baishouyuan-style detail_item_icon Matrix) -->
+    <section class="detail_item" id="explore">
+      <div class="detail_item_header">
+        <div class="detail_item_title">了解更多</div>
+        <p class="detail_item_subtitle">关注官方多平台矩阵，第一时间获取展会动态与高能花絮</p>
+      </div>
+
+      <div class="detail_item_icon">
+        
+        <!-- Bilibili -->
+        <div class="detail_item_icon_item" onclick="openSocialLink('bilibili')">
+          <div class="detail_item_icon_item_img">
+            <div class="icon-avatar b-blue">
+              <svg width="44" height="44" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.813 4.653h.854c1.51 0 2.733 1.224 2.733 2.734v9.226c0 1.51-1.223 2.734-2.733 2.734H5.333c-1.51 0-2.733-1.224-2.733-2.734V7.387c0-1.51 1.223-2.734 2.733-2.734h.854l-1.39-1.39a.75.75 0 0 1 1.06-1.06l2.122 2.122h7.982l2.122-2.122a.75.75 0 1 1 1.06 1.06l-1.33 1.39zm-9.313 5.48c-.69 0-1.25.56-1.25 1.25v2.5c0 .69.56 1.25 1.25 1.25s1.25-.56 1.25-1.25v-2.5c0-.69-.56-1.25-1.25-1.25zm7 0c-.69 0-1.25.56-1.25 1.25v2.5c0 .69.56 1.25 1.25 1.25s1.25-.56 1.25-1.25v-2.5c0-.69-.56-1.25-1.25-1.25z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="detail_item_icon_item_content">哔哩哔哩</div>
+          <span class="detail_item_icon_desc">@CyberPaw极客兽聚</span>
+        </div>
+
+        <!-- 官方抖音 / 短视频 -->
+        <div class="detail_item_icon_item" onclick="openSocialLink('douyin')">
+          <div class="detail_item_icon_item_img">
+            <div class="icon-avatar b-pink">
+              <svg width="44" height="44" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.67a2.887 2.887 0 1 1-2.04-2.766v-3.57a6.331 6.331 0 1 0 5.485 6.255v-7.39a8.17 8.17 0 0 0 4.887 1.637v-3.15z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="detail_item_icon_item_content">官方抖音</div>
+          <span class="detail_item_icon_desc">花絮与毛毛精选短片</span>
+        </div>
+
+        <!-- WikiFur 兽圈百科 -->
+        <div class="detail_item_icon_item" onclick="openSocialLink('wikifur')">
+          <div class="detail_item_icon_item_img">
+            <div class="icon-avatar b-green">
+              <svg width="44" height="44" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.5h-2v-2h2v2zm0-4h-2V7h2v5.5z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="detail_item_icon_item_content">WikiFur</div>
+          <span class="detail_item_icon_desc">中文兽圈百科专属词条</span>
+        </div>
+
+        <!-- 加入QQ群 -->
+        <div class="detail_item_icon_item" onclick="openContactModal()">
+          <div class="detail_item_icon_item_img">
+            <div class="icon-avatar b-orange">
+              <svg width="44" height="44" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4 21l3.54-.93A8.96 8.96 0 0 0 12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-2.5 10c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm5 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="detail_item_icon_item_content">加入QQ群</div>
+          <span class="detail_item_icon_desc">群号：123456789</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 2: 图片展示 (Baishouyuan-style 3D Carousel with Arrows & Lightbox) -->
+    <section class="detail_item" id="gallery">
+      <div class="detail_item_header">
+        <div class="detail_item_title_noani">图片展示</div>
+        <p class="detail_item_subtitle">光影定格下的毛茸暖意 · 点击图片可查看高清大图</p>
+      </div>
+
+      <div class="carousel-container">
+        <div class="carousel" id="carousel">
+          
+          <div class="carousel-item" data-index="0" onclick="expandImage(this)">
+            <img src="assets/images/fursuit_highlight.jpg" alt="千人巡游与合影时刻">
+            <div class="carousel_caption">千人巡游与全员大合影</div>
+          </div>
+
+          <div class="carousel-item" data-index="1" onclick="expandImage(this)">
+            <img src="assets/images/gallery_stage.jpg" alt="主题舞台宅舞秀演">
+            <div class="carousel_caption">主题舞台秀演与才艺走秀</div>
+          </div>
+
+          <div class="carousel-item" data-index="2" onclick="expandImage(this)">
+            <img src="assets/images/gallery_alley.jpg" alt="同人市集与画师街">
+            <div class="carousel_caption">同人市集与毛装创作者专区</div>
+          </div>
+
+          <div class="carousel-item" data-index="3" onclick="expandImage(this)">
+            <img src="assets/images/banner.jpg" alt="展会主视觉KV">
+            <div class="carousel_caption">CyberPaw 官方主题展位海报</div>
+          </div>
+
+          <!-- Carousel Controls (Baishouyuan-style left/right svg arrow buttons) -->
+          <div class="carousel-left" id="carousel-prev" onclick="prevSlide()" aria-label="上一张">
+            <svg viewBox="0 0 1024 1024" width="48" height="48">
+              <path d="M704 908.8 307.2 512 704 115.2c25.6-25.6 25.6-70.4 0-96-25.6-25.6-70.4-25.6-96 0L166.4 460.8C147.2 480 140.8 492.8 140.8 512s6.4 32 19.2 51.2l441.6 441.6c25.6 25.6 70.4 25.6 96 0C729.6 979.2 729.6 934.4 704 908.8z" fill="currentColor"></path>
+            </svg>
+          </div>
+
+          <div class="carousel-right" id="carousel-next" onclick="nextSlide()" aria-label="下一张">
+            <svg viewBox="0 0 1024 1024" width="48" height="48">
+              <path d="M294.4 908.8 684.8 512 294.4 115.2c-25.6-25.6-25.6-70.4 0-96 25.6-25.6 70.4-25.6 96 0L832 460.8c12.8 12.8 19.2 32 19.2 51.2S844.8 544 832 563.2l-441.6 441.6c-25.6 25.6-70.4 25.6-96 0C262.4 979.2 262.4 934.4 294.4 908.8z" fill="currentColor"></path>
+            </svg>
+          </div>
+
+        </div>
+      </div>
+      
+      <!-- Dots Indicator -->
+      <div class="carousel-dots" id="carousel-dots">
+        <span class="dot active" onclick="goToSlide(0)"></span>
+        <span class="dot" onclick="goToSlide(1)"></span>
+        <span class="dot" onclick="goToSlide(2)"></span>
+        <span class="dot" onclick="goToSlide(3)"></span>
+      </div>
+    </section>
+
+    <!-- Section 3: 最新资讯 (Baishouyuan-style news_container) -->
+    <section class="detail_item" id="news">
+      <div class="detail_item_header">
+        <div class="detail_item_title">最新资讯</div>
+        <p class="detail_item_subtitle">重要通知、展会进程与创作者招募一手资讯</p>
+      </div>
+
+      <div class="news_container">
+        
+        <!-- News Item 1 -->
+        <article class="news_item" onclick="openNewsDetail(1)">
+          <div class="news_item_image">
+            <img src="assets/images/banner.jpg" alt="CyberPaw 2026 一宣预告">
+            <span class="news_tag">官方公告</span>
+          </div>
+          <div class="news_item_content">
+            <h3 class="news_item_title">CyberPaw 2026：现世神祇一宣预告来袭！</h3>
+            <div class="news_item_date">📅 2026-05-01 · 组委会宣</div>
+            <p class="news_item_summary">跨越虚实边界，探索未来毛茸宇宙。首波参会亮点、主展馆场地规模及限定周边企划正式解禁！</p>
+            <span class="news_read_more">阅读详情 ↗</span>
+          </div>
+        </article>
+
+        <!-- News Item 2 -->
+        <article class="news_item" onclick="openNewsDetail(2)">
+          <div class="news_item_image">
+            <img src="assets/images/gallery_stage.jpg" alt="星缘舞台联动">
+            <span class="news_tag">节目招募</span>
+          </div>
+          <div class="news_item_content">
+            <h3 class="news_item_title">百兽巡游联动企划 & 舞台宅舞嘉宾报名通道</h3>
+            <div class="news_item_date">📅 2026-07-15 · 演出组</div>
+            <p class="news_item_summary">亦师亦友的欢喜聚落，有什么新奇玩法呢？舞台走秀、才艺对决与千人红毯巡游专属名额现已开放申请！</p>
+            <span class="news_read_more">阅读详情 ↗</span>
+          </div>
+        </article>
+
+        <!-- News Item 3 -->
+        <article class="news_item" onclick="openNewsDetail(3)">
+          <div class="news_item_image">
+            <img src="assets/images/gallery_alley.jpg" alt="知情同意书下载">
+            <span class="news_tag">资料下载</span>
+          </div>
+          <div class="news_item_content">
+            <h3 class="news_item_title">参会须知 & 未成年人监护人知情同意书下载</h3>
+            <div class="news_item_date">📅 2026-08-10 · 事务组</div>
+            <p class="news_item_summary">请所有参会者务必仔细阅读场馆出入守则。未成年同好请提前打印并签署监护人知情同意委托书。</p>
+            <span class="news_read_more">阅读详情 ↗</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Section 4: 活动日程安排 (Schedule) -->
+    <section class="detail_item schedule_section" id="schedule">
+      <div class="detail_item_header">
+        <div class="detail_item_title">活动日程</div>
+        <p class="detail_item_subtitle">三天两夜充实体验，从早到晚绝不冷场</p>
+      </div>
+
+      <!-- Schedule Filter Tabs -->
+      <div class="schedule-tabs" id="schedule-tabs">
+        <button class="tab-btn active" data-day="day1">
+          <span class="tab-day">DAY 1 (10.14)</span>
+          <span class="tab-name">启幕 · 入场与前瞻</span>
+        </button>
+        <button class="tab-btn" data-day="day2">
+          <span class="tab-day">DAY 2 (10.15)</span>
+          <span class="tab-name">狂欢 · 巡游与夜场</span>
+        </button>
+        <button class="tab-btn" data-day="day3">
+          <span class="tab-day">DAY 3 (10.16)</span>
+          <span class="tab-name">盛景 · 市集与合影</span>
+        </button>
+      </div>
+
+      <!-- Schedule Day Panels -->
+      <div class="schedule-content">
+        <!-- Day 1 Items -->
+        <div class="schedule-day-panel active" id="panel-day1">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="time-col">09:00 - 11:30</div>
+              <div class="content-col">
+                <div class="timeline-tags"><span class="tag tag-blue">签到</span><span class="tag tag-gray">大厅</span></div>
+                <h4>参会者核验入场 & 伴手礼包领取</h4>
+                <p>于主接待台核验参会身份，领取参会胸牌、挂绳、限定纪念徽章与展会导览手册。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time-col">10:00 - 18:00</div>
+              <div class="content-col">
+                <div class="timeline-tags"><span class="tag tag-orange">市集</span><span class="tag tag-purple">B展厅</span></div>
+                <h4>同人市集与创作者专区全日开放</h4>
+                <p>首日摊位开市！抢购限量手作与签绘作品，自由结伴游览。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time-col">14:00 - 15:30</div>
+              <div class="content-col">
+                <div class="timeline-tags"><span class="tag tag-green">舞台秀</span><span class="tag tag-blue">主舞台</span></div>
+                <h4>CyberPaw 2026 盛大开幕式 & 嘉宾亮相</h4>
+                <p>主办方致辞、特别嘉宾与造物大师登台亮相、年度主题宣传片首映发布。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 2 Items -->
+        <div class="schedule-day-panel" id="panel-day2">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="time-col">09:30 - 12:00</div>
+              <div class="content-col">
+                <div class="timeline-tags"><span class="tag tag-blue">摄影棚</span><span class="tag tag-purple">C展厅</span></div>
+                <h4>毛装主题摄影棚全时段运作</h4>
+                <p>专业摄影师掌镜，赛博霓虹机舱、日式微风庭院、高阶棚拍布光免费使用。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time-col">13:30 - 15:30</div>
+              <div class="content-col">
+                <div class="timeline-tags"><span class="tag tag-red">全场焦点</span><span class="tag tag-orange">主展馆</span></div>
+                <h4>🔥 盛大毛装大巡游 (Fursuit Parade)</h4>
+                <p>全场最高能时刻！红毯巡回游行，请所有出毛小伙伴提前至更衣室备场。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time-col">20:00 - 23:00</div>
+              <div class="content-col">
+                <div class="timeline-tags"><span class="tag tag-orange">派对</span><span class="tag tag-purple">星空厅</span></div>
+                <h4>Cyber-Glow 荧光电音夜间狂欢派对</h4>
+                <p>特邀圈内知名 DJ 带来高燃节奏，挥动荧光棒，释放夜间兽性能量！</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 3 Items -->
+        <div class="schedule-day-panel" id="panel-day3">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="time-col">10:00 - 12:30</div>
+              <div class="content-col">
+                <div class="timeline-tags"><span class="tag tag-blue">沙龙</span><span class="tag tag-green">研讨室</span></div>
+                <h4>毛装制作工坊 & 创作者闭门经验研讨</h4>
+                <p>泡沫雕刻、眼球翻模、电路集成技巧面对面传授，助力每一位想拥有一只毛毛的梦想者。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time-col">14:00 - 15:30</div>
+              <div class="content-col">
+                <div class="timeline-tags"><span class="tag tag-red">重要时刻</span><span class="tag tag-orange">主展馆</span></div>
+                <h4>📸 全员大合影 (Group Photo)</h4>
+                <p>全体参会者、工作人员与毛毛共同留影！记录我们在此相聚的美好印记。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time-col">16:30 - 17:30</div>
+              <div class="content-col">
+                <div class="timeline-tags"><span class="tag tag-purple">闭幕</span><span class="tag tag-blue">主舞台</span></div>
+                <h4>闭幕致谢 & 2027 下一届彩蛋揭晓</h4>
+                <p>为获奖参演者颁奖，感谢每一位奉献的志愿者与支持者，期待下一次重逢！</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 5: 会场交通指南 (Venue & Transport) -->
+    <section class="detail_item" id="venue">
+      <div class="detail_item_header">
+        <div class="detail_item_title">会场交通</div>
+        <p class="detail_item_subtitle">新纪元未来博览中心 · 交通便捷，周边配套完善</p>
+      </div>
+
+      <div class="venue-container">
+        <div class="venue-grid">
+          <div class="venue-info-box">
+            <div class="venue-name-block">
+              <h3>新纪元未来博览中心 · 主馆</h3>
+              <p class="venue-addr">📍 创想新城核心区科技大道 88 号（展馆 1 号门入场）</p>
+            </div>
+
+            <div class="traffic-methods">
+              <div class="traffic-item">
+                <div class="t-icon">🚇</div>
+                <div class="t-details">
+                  <strong>轨道交通</strong>
+                  <p>地铁 2 号线 / 11 号线【博览中心站】A 口出站，直行 150 米即达安检入口。</p>
+                </div>
+              </div>
+              <div class="traffic-item">
+                <div class="t-icon">✈️</div>
+                <div class="t-details">
+                  <strong>机场直达</strong>
+                  <p>机场乘坐机场快线直达【博览南站】（约 35 分钟），或打车约 25 公里。</p>
+                </div>
+              </div>
+              <div class="traffic-item">
+                <div class="t-icon">🚄</div>
+                <div class="t-details">
+                  <strong>高铁站接驳</strong>
+                  <p>高铁中心站乘地铁 2 号线直达，无需换乘；西广场设专员接驳指引。</p>
+                </div>
+              </div>
+              <div class="traffic-item">
+                <div class="t-icon">🏨</div>
+                <div class="t-details">
+                  <strong>特惠合作酒店</strong>
+                  <p>协议星级酒店【凯莱未来酒店】紧邻会场，参会兽友享 7 折连住特惠，带毛装晾干间。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="venue-map-card">
+            <div class="map-mockup">
+              <div class="map-pin-pulse">
+                <span class="pin-icon">🐾</span>
+                <span class="pin-label">CyberPaw 会场</span>
+              </div>
+              <div class="map-grid-lines"></div>
+              <div class="map-info-badge">
+                <span>室内可用总面积 8,000㎡ · 全覆盖中央恒温</span>
+              </div>
+            </div>
+            <div class="map-card-footer">
+              <span>导航推荐搜索：<strong>“新纪元未来博览中心-A馆”</strong></span>
+              <a href="https://maps.google.com" target="_blank" rel="noreferrer" class="btn btn-sm btn-ghost">
+                在大地图中打开 ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: 参会守则 (Guidelines & Etiquette) -->
+    <section class="detail_item" id="guidelines">
+      <div class="detail_item_header">
+        <div class="detail_item_title">参会守则</div>
+        <p class="detail_item_subtitle">毛毛友好礼仪，共同维护温馨美好的展会生态</p>
+      </div>
+
+      <div class="rules-grid">
+        <div class="rule-card">
+          <div class="rule-num">01</div>
+          <h4>触碰前务必征得同意</h4>
+          <p>毛装视野与听力受限，若想拥抱、合影或轻触毛毛，请走至正面挥手示意并礼貌征得同意，严禁拉扯尾巴或耳朵。</p>
+        </div>
+        <div class="rule-card">
+          <div class="rule-num">02</div>
+          <h4>关爱摄影与无强闪光</h4>
+          <p>近距离高功率强闪光灯可能会造成视线暂时致盲。请尽量使用柔光灯或自然补光拍摄，保护出毛同好安全。</p>
+        </div>
+        <div class="rule-card">
+          <div class="rule-num">03</div>
+          <h4>更衣室神圣与隐私保护</h4>
+          <p>更衣室是私密休息空间。严禁在更衣室内摄影、录像或非授权人员闯入，非特邀同行助手（Handler）请勿滞留。</p>
+        </div>
+        <div class="rule-card">
+          <div class="rule-num">04</div>
+          <h4>体谅与毛毛降温</h4>
+          <p>出毛体力消耗极快，当看到毛毛比出“暂停”手势或前往休息区时，请主动让出通道，切勿强行拦路合影。</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer (Baishouyuan Style Clean Bottom) -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <img src="assets/images/logo.jpg" alt="CyberPaw Logo" class="brand-img">
+            <div class="brand-text">
+              <span class="brand-title">CYBERPAW</span>
+              <span class="brand-sub">2026 // 极客兽聚组委会</span>
+            </div>
+          </div>
+          <p class="footer-bio">
+            寻迹科技边，相约极客渊。跨越虚拟与现实的毛茸盛会。
+          </p>
+          <div class="github-badge">
+            <span>🚀 托管于 GitHub Pages · 纯静态零构建架构</span>
+          </div>
+        </div>
+
+        <div class="footer-links-group">
+          <div class="link-col">
+            <h5>快速导航</h5>
+            <a href="#hero">网站首页</a>
+            <a href="#explore">了解更多</a>
+            <a href="#gallery">精彩图集</a>
+            <a href="#news">最新资讯</a>
+          </div>
+          <div class="link-col">
+            <h5>参会指引</h5>
+            <a href="#schedule">活动日程</a>
+            <a href="#venue">会场交通</a>
+            <a href="#guidelines">毛毛礼仪守则</a>
+            <a href="javascript:void(0)" onclick="openContactModal()">商业与摊位合作</a>
+          </div>
+          <div class="link-col">
+            <h5>社交矩阵</h5>
+            <a href="javascript:void(0)" onclick="openSocialLink('bilibili')">哔哩哔哩 (Bilibili)</a>
+            <a href="javascript:void(0)" onclick="openSocialLink('douyin')">官方抖音号</a>
+            <a href="javascript:void(0)" onclick="openSocialLink('wikifur')">WikiFur 词条</a>
+            <a href="javascript:void(0)" onclick="openContactModal()">官方 QQ 交流群</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 CyberPaw Convention. All rights reserved.</p>
+        <p class="sub-text">参考 baishouyuan.cn 沉浸式极简布局 · 纯静态 HTML5/CSS3/JS · 开源免维护</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Contact & Community Modal -->
+  <div class="modal-backdrop" id="contact-modal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeContactModal()">&times;</button>
+      <div class="modal-header">
+        <img src="assets/images/logo.jpg" alt="Logo" class="modal-logo">
+        <h3 id="modal-title">加入 CyberPaw 官方交流群</h3>
+        <p id="modal-subtitle">获取最新资讯、摊位申报名额与同好拼房拼车</p>
+      </div>
+      <div class="modal-body">
+        <div class="contact-card">
+          <div class="contact-icon">💬</div>
+          <div class="contact-info">
+            <strong>官方 QQ 1群（已满）</strong>
+            <span>987654321</span>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">✨</div>
+          <div class="contact-info">
+            <strong>官方 QQ 2群（热烈纳新中）</strong>
+            <span>123456789</span>
+          </div>
+          <button class="btn btn-sm btn-outline" onclick="copyText('123456789')">复制群号</button>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">📺</div>
+          <div class="contact-info">
+            <strong>Bilibili 官方动态号</strong>
+            <span>@CyberPaw极客兽聚组委会</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <p class="modal-tip">客服咨询邮箱：contact@cyberpaw.example.com</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-notify" id="toast-notify">复制成功！</div>
+
+  <!-- Floating Back to Top Button -->
+  <button class="back-to-top" id="back-to-top" aria-label="回到顶部">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <!-- Main JavaScript Logic -->
+  <script src="script.js"></script>
+</body>
+</html>
